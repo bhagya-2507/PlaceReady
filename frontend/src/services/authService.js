@@ -1,8 +1,12 @@
 import api from './api';
 
+const normalizeResponse = (response) => ({
+  data: response?.data ?? response,
+});
+
 export const authService = {
   login: async (credentials) => {
-    const res = await api.post('/auth/login', credentials);
+    const res = normalizeResponse(await api.post('/auth/login', credentials));
     if (res.data?.token) {
       localStorage.setItem('placeready_jwt', res.data.token);
       localStorage.setItem('placeready_user', JSON.stringify(res.data.user));
@@ -11,7 +15,7 @@ export const authService = {
   },
 
   register: async (userData) => {
-    const res = await api.post('/auth/register', userData);
+    const res = normalizeResponse(await api.post('/auth/register', userData));
     if (res.data?.token) {
       localStorage.setItem('placeready_jwt', res.data.token);
       localStorage.setItem('placeready_user', JSON.stringify(res.data.user));
@@ -20,7 +24,7 @@ export const authService = {
   },
 
   getMe: async () => {
-    const res = await api.get('/auth/me');
+    const res = normalizeResponse(await api.get('/auth/me'));
     if (res.data?.user) {
       localStorage.setItem('placeready_user', JSON.stringify(res.data.user));
     }
