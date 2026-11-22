@@ -1,0 +1,14 @@
+{
+  "name": "placeready",
+  "version": "2.0.0",
+  "description": "PlaceReady - Smart Campus Placement Management Portal (MERN Stack)",
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "seed": "cd backend && node src/utils/seedData.js",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "keywords": ["placeready", "mern", "placement-portal", "react", "nodejs", "mongodb"],
+  "author": "College Engineering Team (3 Members)",
+  "license": "ISC"
+}
